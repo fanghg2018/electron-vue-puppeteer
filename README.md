@@ -22,12 +22,4 @@ yarn lint
 
 ### Customize configuration
 增加配置
-
-   "vue-cli-plugin-electron-builder": "~1.4.6",
-    "puppeteer-core": "1.8.0",
-    "electron": "9.0.0",
-
-    yarn add bufferutil utf-8-validate -D
-
-
- 或：    "puppeteer": "1.8.0",
+ "puppeteer": "5.0.1",
