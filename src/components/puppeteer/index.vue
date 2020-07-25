@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import { googleSearch } from './GoogleSearch'
 export default {
   name: 'HelloWorld',
   data () {
