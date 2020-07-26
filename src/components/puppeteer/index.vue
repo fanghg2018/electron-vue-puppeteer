@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     async search () {
-      await googleSearch(this.searchContent)
+      await document.googleSearch(this.searchContent)
       this.searchContent = ''
     }
   }
