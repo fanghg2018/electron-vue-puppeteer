@@ -1,4 +1,4 @@
-# electron_vue_demo
+# electron_vue_puppeteer_demo
 
 ## Project setup
 ```
