@@ -23,3 +23,17 @@ yarn lint
 ### Customize configuration
 增加配置
  "puppeteer": "5.0.1",
+ 主进程：background.js加入
+global.puppeteer = require('puppeteer-core')
+
+渲染进程：
+
+
+const remote = window.require('electron').remote
+const puppeteer = remote.getGlobal('puppeteer')
+
+const app = await puppeteer.launch({
+        headless: false,
+        executablePath: 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe'
+//executablePath: 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
+      }) // default is true
