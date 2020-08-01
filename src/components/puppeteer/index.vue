@@ -1,11 +1,14 @@
 <template>
   <div class="hello">
    <input v-model="searchContent" @keydown.enter="search" />
-    <button @click="search">Search</button>
+    <button @click="search(searchContent)">Search</button>
   </div>
 </template>
 
 <script>
+// const remote = window.require('electron')
+const remote = window.require('electron').remote
+const puppeteer = remote.getGlobal('puppeteer')
 export default {
   name: 'HelloWorld',
   data () {
@@ -14,8 +17,19 @@ export default {
     }
   },
   methods: {
-    async search () {
-      await document.googleSearch(this.searchContent)
+    async search (context) {
+      const browser = await puppeteer.launch({
+        headless: false,
+        executablePath: 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
+      })
+      const page = await browser.newPage()
+      await page.goto('https://www.baidu.com')
+      await page.focus('#kw') // 关键字输入框的id. 注释2
+      await page.type('#kw', context)
+      await page.click('#su') // '百度一下'按钮的id. 注释3
+      await page.waitFor(3000)
+      await browser.close()
+
       this.searchContent = ''
     }
   }
