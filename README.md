@@ -22,23 +22,56 @@ yarn lint
 
 ### Customize configuration
 增加配置
- "puppeteer": "5.0.1",
- 主进程：background.js加入
+vue.config.js 添加：
  ```js
-global.puppeteer = require('puppeteer-core')
+
+module.exports = {
+  pluginOptions: {
+    electronBuilder: {
+
+      externals: ['puppeteer-core'] // 这里是你使用的原生模块名字列表，改成自己的即可
+
+      // nodeModulesPath: ['../../node_modules', './node_modules']// 这里是多个node_modules路径，按自己需要配置即可
+    }
+  }
+}
+
 
 ```
-渲染进程：
+使用：
 
 ```js
-const remote = window.require('electron').remote
-const puppeteer = remote.getGlobal('puppeteer')
+const puppeteer = require('puppeteer-core')
 
-const app = await puppeteer.launch({
+const browser = await puppeteer.launch({
         headless: false,
-        executablePath: 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe'
+       //除受控提示
+        ignoreDefaultArgs:['--enable-automation'],
+        executablePath: 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
+      });
+      const page = await browser.newPage();
+      await page.goto('https://example.com');
+```
+问题：
 
-//executablePath: 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
+```js
+ws in ./node_modules/puppeteer-core/lib/cjs/puppeteer/common/WebSocketTransport.js
 
-      }) // default is true
+To install it, you can run: npm install --save ws
+
+```
+版本太新,更换为
+   "vue-cli-plugin-electron-builder": "1.4.6",
+
+```js
+运行后有乱码：  (node:22808) ExtensionLoadWarning: Warnings loading extension at
+注释掉background.js  app.on('ready', async () => { 后面的。
+  // if (isDevelopment && !process.env.IS_TEST) {
+  //   // Install Vue Devtools
+  //   try {
+  //     await installExtension(VUEJS_DEVTOOLS)
+  //   } catch (e) {
+  //     console.error('Vue Devtools failed to install:', e.toString())
+  //   }
+  // }
 ```
