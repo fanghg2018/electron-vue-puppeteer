@@ -18,8 +18,8 @@ export default {
     async search (context) {
       const browser = await puppeteer.launch({
         headless: false,
-       //除受控提示
-         ignoreDefaultArgs:['--enable-automation'],
+        // 除受控提示
+        ignoreDefaultArgs: ['--enable-automation'],
         executablePath: 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
       })
       const page = await browser.newPage()
