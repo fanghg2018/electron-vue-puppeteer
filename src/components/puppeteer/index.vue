@@ -6,9 +6,7 @@
 </template>
 
 <script>
-// const remote = window.require('electron')
-const remote = window.require('electron').remote
-const puppeteer = remote.getGlobal('puppeteer')
+const puppeteer = require('puppeteer-core')
 export default {
   name: 'HelloWorld',
   data () {
@@ -20,6 +18,8 @@ export default {
     async search (context) {
       const browser = await puppeteer.launch({
         headless: false,
+       //除受控提示
+         ignoreDefaultArgs:['--enable-automation'],
         executablePath: 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
       })
       const page = await browser.newPage()
