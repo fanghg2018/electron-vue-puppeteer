@@ -26,7 +26,7 @@ yarn lint
 
 ```js
 const puppeteer = require('puppeteer-core')
-
+(async () => {
 const browser = await puppeteer.launch({
         headless: false,
        //除受控提示
@@ -35,6 +35,9 @@ const browser = await puppeteer.launch({
       });
       const page = await browser.newPage();
       await page.goto('https://example.com');
+      
+      await browser.close();
+})();
 ```
 问题：
 
