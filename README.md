@@ -26,8 +26,9 @@ yarn lint
 
 ```js
 const puppeteer = require('puppeteer-core')
+
 (async () => {
-const browser = await puppeteer.launch({
+       const browser = await puppeteer.launch({
         headless: false,
        //除受控提示
         ignoreDefaultArgs:['--enable-automation'],
