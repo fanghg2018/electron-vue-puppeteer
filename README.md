@@ -21,23 +21,7 @@ yarn lint
 ```
 
 ### Customize configuration
-增加配置
-vue.config.js 添加：
- ```js
 
-module.exports = {
-  pluginOptions: {
-    electronBuilder: {
-
-      externals: ['puppeteer-core'] // 这里是你使用的原生模块名字列表，改成自己的即可
-
-      // nodeModulesPath: ['../../node_modules', './node_modules']// 这里是多个node_modules路径，按自己需要配置即可
-    }
-  }
-}
-
-
-```
 使用：
 
 ```js
@@ -60,8 +44,23 @@ ws in ./node_modules/puppeteer-core/lib/cjs/puppeteer/common/WebSocketTransport.
 To install it, you can run: npm install --save ws
 
 ```
-版本太新,更换为
-   "vue-cli-plugin-electron-builder": "1.4.6",
+增加配置
+vue.config.js 添加：
+ ```js
+
+module.exports = {
+  pluginOptions: {
+    electronBuilder: {
+      nodeIntegration: true,
+      externals: ['puppeteer-core'] // 这里是你使用的原生模块名字列表，改成自己的即可
+
+      // nodeModulesPath: ['../../node_modules', './node_modules']// 这里是多个node_modules路径，按自己需要配置即可
+    }
+  }
+}
+
+
+```
 
 ```js
 运行后有乱码：  (node:22808) ExtensionLoadWarning: Warnings loading extension at
