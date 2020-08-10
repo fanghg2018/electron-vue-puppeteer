@@ -20,8 +20,9 @@
                   <el-menu-item index="/orders/2">订单减少</el-menu-item>
                  </el-submenu>
                  <el-menu-item index="/puppeteer">PUPPETEER</el-menu-item>
+                 <el-menu-item index="/xlsx">xlsx</el-menu-item>
 
-            </el-menu>
+        </el-menu>
       </el-header>
    </el-container>
    <el-container>

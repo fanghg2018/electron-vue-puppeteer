@@ -7,6 +7,7 @@ import Order from '../components/order/orders.vue'
 import A1 from '../components/order/1.vue'
 import A2 from '../components/order/2.vue'
 import Puppeteer from '../components/puppeteer/index.vue'
+import Xlsx from '../components/xlsx/index.vue'
 
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push (location) {
@@ -53,6 +54,10 @@ const routes = [
   {
     path: '/puppeteer',
     component: Puppeteer
+  },
+  {
+    path: '/xlsx',
+    component: Xlsx
   }
 
 ]
